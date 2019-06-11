@@ -1,0 +1,39 @@
+#!/bin/python2
+
+#scissors beats paper
+#paper beats rock
+#rock beats scissors
+
+from random import randint
+player = input('rock (r), paper (p), scissors (s)?')
+
+chose = randint(1,3)
+#print (chose)
+
+#1 = rock
+#2 = paper
+#3 = scissors
+if chose == 1:
+  computer = 'r'
+elif chose == 2:
+  computer = 'p'
+else:
+  computer = 's'
+  
+print player, 'vs', computer
+
+#determine result
+if computer == player:
+  print 'DRAW!'
+elif computer == 's' and player == 'r':
+  print 'Player wins!'
+elif computer == 'p' and player == 'r':  
+  print 'Computers wins!'
+elif computer == 'r' and player == 's':
+  print 'Computers wins!'
+elif computer == 'p' and player == 's':
+  print 'Player wins!'
+elif computer == 'r' and player == 'p':
+  print 'Player wins!'
+elif computer == 's' and player == 'p':
+  print 'Computers wins!'
