@@ -1,0 +1,41 @@
+grades = []
+
+while True:
+  answer = raw_input('Would you like to insert a grade? (y/n): ')
+  if answer.lower() == 'y':
+    grade = input('Insert grade:' )
+    grades.append(grade)
+  else:
+    break
+
+print 'Grades:', grades
+  
+def grades_sum(scores):
+  total = 0
+  for score in scores: 
+    total += score
+  return total
+ 
+print 'Sum:', grades_sum(grades)  
+  
+def grades_average(grades_input):
+  sum_of_grades = grades_sum(grades_input)
+  average = sum_of_grades / float(len(grades_input))
+  return average
+
+print 'Average:',grades_average(grades)
+
+def grades_variance(scores):
+  average = grades_average(scores)
+  variance = 0
+  for score in scores:
+    variance += (average - score) ** 2
+  return variance / len(scores)
+
+print 'Variance:', grades_variance(grades)
+
+def grades_std_deviation(variance):
+  return variance ** 0.5
+
+variance = grades_variance(grades)
+print 'Standard Deviation:', grades_std_deviation(variance)
