@@ -2,10 +2,10 @@
 
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 currentmessage = input('Enter your message: ')
-key = int(input('Enter your key:')) #store key
 newmessage = ""
 
 def encrypt(newmessage):
+  key = int(input('Enter your key:')) #store key
   for i in currentmessage:
     currentposition = alphabet.index(i) # find the position of the letter
     newposition = (currentposition + key) % 26 #gets new character position, and goes back to zero after 26
@@ -14,13 +14,16 @@ def encrypt(newmessage):
   return newmessage
 
 def decrypt(newmessage):
-  for i in currentmessage:
-    currentposition = alphabet.index(i) # find the position of the letter
-    newposition = (currentposition - key) % 26 #gets new character position, and goes back to zero after 26
-    if newposition < 0:
-      newposition += 26
-    newmessage += alphabet[newposition]
-  #print'The new message is: ', newmessage
+  known = input('Do you have a key? (y/n): ")
+  if known == y:
+    key = int(input('Enter your key:')) #store key
+    for i in currentmessage:
+      currentposition = alphabet.index(i) # find the position of the letter
+      newposition = (currentposition - key) % 26 #gets new character position, and goes back to zero after 26
+      if newposition < 0:
+        newposition += 26
+      newmessage += alphabet[newposition]
+    #print'The new message is: ', newmessage
   return newmessage
 
 decision = input('Would you like to encrypt (e) or decrypt (d)?')
