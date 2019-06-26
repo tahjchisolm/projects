@@ -23,6 +23,15 @@ def decrypt(newmessage):
       if newposition < 0:
         newposition += 26
       newmessage += alphabet[newposition]
+  else:
+      for num in range(1,27):
+        for i in currentmessage:
+          currentposition = alphabet.index(i) # find the position of the letter
+          newposition = (currentposition - num) % 26 #gets new character position, and goes back to zero after 26
+        if newposition < 0:
+          newposition += 26
+        newmessage += alphabet[newposition]
+    
     #print'The new message is: ', newmessage
   return newmessage
 
