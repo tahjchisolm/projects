@@ -1,44 +1,55 @@
 #!/bin/python2
 
 alphabet = "abcdefghijklmnopqrstuvwxyz"
-currentmessage = input('Enter your message: ')
+givenmessage = input('Enter your message: ')
+currentmessage = givenmessage.lower()
 newmessage = ""
+currentposition = 0
 
 def encrypt(newmessage):
   key = int(input('Enter your key:')) #store key
   for i in currentmessage:
-    currentposition = alphabet.index(i) # find the position of the letter
-    newposition = (currentposition + key) % 26 #gets new character position, and goes back to zero after 26
-    newmessage += alphabet[newposition]
-  #print'The new message is: ', newmessage
-  return newmessage
+    if i == " ":
+      newmessage += i
+    else:
+      currentposition = alphabet.index(i) # find the position of the letter
+      newposition = (currentposition + key) % 26 #gets new character position, and goes back to zero after 26
+      newmessage += alphabet[newposition]
+  print 'The new message is: ', newmessage
 
 def decrypt(newmessage):
-  known = input('Do you have a key? (y/n): ")
-  if known == y:
+  known = input('Do you have a key? (y/n): ')
+  if known == 'y':
     key = int(input('Enter your key:')) #store key
     for i in currentmessage:
-      currentposition = alphabet.index(i) # find the position of the letter
-      newposition = (currentposition - key) % 26 #gets new character position, and goes back to zero after 26
-      if newposition < 0:
-        newposition += 26
-      newmessage += alphabet[newposition]
-  else:
-      for num in range(1,27):
-        for i in currentmessage:
-          currentposition = alphabet.index(i) # find the position of the letter
-          newposition = (currentposition - num) % 26 #gets new character position, and goes back to zero after 26
+      if i == " ":
+        newmessage += i
+      else:
+        currentposition = alphabet.index(i) # find the position of the letter
+        newposition = (currentposition - key) % 26 #gets new character position, and goes back to zero after 26
         if newposition < 0:
           newposition += 26
         newmessage += alphabet[newposition]
-    
-    #print'The new message is: ', newmessage
-  return newmessage
+    print 'The new message is: ', newmessage
+  else:
+      for num in range(1,26):
+        ongoingmessage = currentmessage
+        newmessage = ""
+        for i in ongoingmessage:
+          if i == " ":
+            newmessage += i
+          else:
+            currentposition = alphabet.index(i) # find the position of the letter
+            newposition = (currentposition - num) % 26 #gets new character position, and goes back to zero after 26
+            if newposition < 0:
+              newposition += 26
+            newmessage += alphabet[newposition]
+        print newmessage
 
 decision = input('Would you like to encrypt (e) or decrypt (d)?')
 if decision == 'd':
-  print 'The new message is:', decrypt(newmessage)
+  decrypt(newmessage)
 elif decision == 'e':
-  print 'The new message is:', encrypt(newmessage)
+  encrypt(newmessage)
 else:
   print "Not a valid response"
