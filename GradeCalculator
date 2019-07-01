@@ -58,9 +58,6 @@ else:
     given += weights[i]
   final_weight = 100 - given
   needed = (ideal - calculateGrades()) / (final_weight / 100)
-  print ideal
-  print calculateGrades()
-  print final_weight
   print 'You need at least a(n)', needed
 
 
