@@ -1,4 +1,9 @@
 grades = []
+student = {}
+# individual grades held in list
+# categories will be keys in student's dictionary with grades as values
+# categoriy weights held in seperate list?
+# function calculates each weight in order of input to make easier for list to work
 
 while True:
   answer = raw_input('Would you like to insert a grade? (y/n): ')
