@@ -1,46 +1,71 @@
-grades = []
+# create dictionaries and lists
 student = {}
-# individual grades held in list
-# categories will be keys in student's dictionary with grades as values
-# categoriy weights held in seperate list?
-# function calculates each weight in order of input to make easier for list to work
+weights = {}
 
-while True:
-  answer = raw_input('Would you like to insert a grade? (y/n): ')
-  if answer.lower() == 'y':
-    grade = input('Insert grade:' )
-    grades.append(grade)
-  else:
-    break
 
-print 'Grades:', grades
+def addGrades():
+  category = raw_input('What grading category will this fall under?: ')
+  weight = int(input('What percentage of your grade?: '))
+  grades = [] # local because list will refresh when new one is made
+  print "Input 'done' when done."
+  while True:
+    try: # any input that isn't an int will end the loop
+      userInput = input('Enter Grade:')
+      grades.append(int(userInput))
+    except:
+      student[category] = grades
+      break
+  student[category] = grades
+  weights[category] = weight
+  # lists are given the same key to keep them related
+
+def calculateGrades():
+  weightedAvg = 0
+  for i in student:
+    total = 0
+    for x in student[i]:
+      total += x
+      avg = total / len(student[i])
+    weightedAvg += avg * weights[i] / 100
+  return weightedAvg
+    
+
+user = raw_input('Are you calculating your final grade? (y/n):')
+if user == 'y':
+  answer = raw_input('Do you have grades to input?')
+  while True: # ongoing loop while there are more grades to add
+    if answer == 'y' or answer == 'yes':
+      addGrades() # fresh list of grades are made
+    else:
+      break
+    answer = raw_input('Do you have more grades?')
+  print 'Your final grade is: ', calculateGrades()
   
-def grades_sum(scores):
-  total = 0
-  for score in scores: 
-    total += score
-  return total
- 
-print 'Sum:', grades_sum(grades)  
+else:
+  user = raw_input("Are you trying to find a grade needed? (y/n):")
+  if user == 'y':
+    answer = raw_input('Do you have grades to input? (y/n): ')
+  while True: # ongoing loop while there are more grades to add
+    if answer == 'y' or answer == 'yes':
+      addGrades() # fresh list of grades are made
+    else:
+      break
+    answer = raw_input('Do you have more grades? (y/n): ')
   
-def grades_average(grades_input):
-  sum_of_grades = grades_sum(grades_input)
-  average = sum_of_grades / float(len(grades_input))
-  return average
+  ideal = float(input('What grade are you looking for?: '))
+  given = 0
+  for i in weights:
+    given += weights[i]
+  final_weight = 100 - given
+  needed = (ideal - calculateGrades()) / (final_weight / 100)
+  print ideal
+  print calculateGrades()
+  print final_weight
+  print 'You need at least a(n)', needed
 
-print 'Average:',grades_average(grades)
 
-def grades_variance(scores):
-  average = grades_average(scores)
-  variance = 0
-  for score in scores:
-    variance += (average - score) ** 2
-  return variance / len(scores)
 
-print 'Variance:', grades_variance(grades)
-
-def grades_std_deviation(variance):
-  return variance ** 0.5
-
-variance = grades_variance(grades)
-print 'Standard Deviation:', grades_std_deviation(variance)
+# future goals:
+# fix errors 'Does this look correct?'
+# convert to GPA
+# implement classes
