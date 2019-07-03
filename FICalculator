@@ -1,0 +1,17 @@
+// average lifetime in US = 78
+// important variables: age, current net worth, income, expenses, savings rate
+// asset allocation % and expected rate of return
+
+
+// financial independence number = yearly spending / safe withdrawal rate
+// years to FI ^ = (FI number - amount already saved) / yearly saving
+// financial experts say 4% is a reasonable SWR for most people
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int lifetime = 78;
+    double swr = 0.04;
+    
+}
