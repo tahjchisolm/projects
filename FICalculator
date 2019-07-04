@@ -10,8 +10,39 @@
 #include <iostream>
 using namespace std;
 
+double calculations(int A, double N, double I, double E, double S) {
+
+}
+
 int main() {
     int lifetime = 78;
     double swr = 0.04;
+    
+    // variables
+    double networth, income, expenses, savings, srate;
+    int age;
+    string answer;
+    
+    cout << "Would you like to know your ideal retirement age? (y/n): ";
+    cin >> answer;
+    if (answer == "y" or answer == "Y") {
+        // user inputs variables
+        cout << "How old are you?: ";
+        cin >> age;
+        cout << "What is your current net worth?: ";
+        cin >> networth;
+        cout << "How much do you have in savings?: ";
+        cin >> savings;
+        cout << "What is your current income?: ";
+        cin >> income;
+        cout << "What percentage do you plan to save a year?: ";
+        cin >> srate;
+        cout << "How much are your current expenses?: ";
+        cin >> expenses;
+        
+    }
+    
+    
+    
     
 }
