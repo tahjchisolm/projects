@@ -10,8 +10,14 @@
 #include <iostream>
 using namespace std;
 
-double calculations(int A, double N, double I, double E, double S) {
-
+double calculations(int age, double investments, double salary, double percentage, double expenses) {
+    double annualSavings = (salary - expenses) * 12;
+    
+    double totalSavings = expenses * 12 / percentage; // annual expenses times investment plans
+    
+    double amountNeeded = totalSavings - investments;
+    
+    // number of years it will take
 }
 
 int main() {
@@ -19,7 +25,7 @@ int main() {
     double swr = 0.04;
     
     // variables
-    double networth, income, expenses, savings, srate;
+    double investments, salary, expenses, savings, srate;
     int age;
     string answer;
     
@@ -29,16 +35,17 @@ int main() {
         // user inputs variables
         cout << "How old are you?: ";
         cin >> age;
-        cout << "What is your current net worth?: ";
-        cin >> networth;
-        cout << "How much do you have in savings?: ";
-        cin >> savings;
-        cout << "What is your current income?: ";
-        cin >> income;
-        cout << "What percentage do you plan to save a year?: ";
-        cin >> srate;
-        cout << "How much are your current expenses?: ";
+        cout << "How much do you have in investments: ";
+        cin >> investments;
+        cout << "What is your monthly salary?: ";
+        cin >> salary;
+        cout << "How much are your monthly expenses?: ";
         cin >> expenses;
+        cout << "What percentage do you expect your investments to make: ";
+        cin >> percentage;
+        
+        
+        calculations(age, investments, salary, percentage, expenses)
         
     }
     
